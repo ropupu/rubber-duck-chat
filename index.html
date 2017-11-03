@@ -1,0 +1,67 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.ico">
+
+    <title>Rubber Duck Chat</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="chat.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container bootstrap snippet" id="chat-box">
+    <div class="row">
+        <!--=========================================================-->
+        <!-- selected chat -->
+      <div class="col-md-2"></div>
+      <div class="col-md-8 bg-white center-block">
+         <h2>Rubber Duck Chat</h2>
+            <div class="bg-white">
+              <div class="input-group">
+                <input id="chat-input" v-model="input_message" class="form-control border no-shadow no-rounded" @keyup.enter="send" placeholder="Type your message here">
+                <span class="input-group-btn">
+                  <button class="btn btn-success no-rounded" type="button" v-on:click="send">Send</button>
+                </span>
+              </div><!-- /input-group --> 
+            </div>            
+            <div class="chat-message">
+                <ul class="chat">
+                    <li v-for="message in messages" v-bind:class="message.id%2 == 0 ? 'left clearfix' : 'right clearfix'">
+                      <span v-bind:class="message.id%2 == 0 ? 'chat-img pull-left' : 'chat-img pull-right'">
+                        <img v-bind:src="message.id%2 == 0 ? 'user.png': 'duck.png'" alt="User Avatar">
+                      </span>
+                      <div class="chat-body clearfix">
+                        <div class="header">
+                          <strong class="primary-font">{{ message.name }}</strong>
+                          <small class="pull-right text-muted"><i class="fa fa-clock-o"></i>{{ message.datetime }}</small>
+                        </div>
+                        <p>
+                          {{ message.message }}
+                        </p>
+                      </div>
+                    </li>
+                </ul>
+            </div>
+    </div>        
+      <div class="col-md-2"></div>
+  </div>
+</div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="app.vue"></script>
+  </body>
+</html>
